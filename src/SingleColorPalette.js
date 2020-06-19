@@ -38,7 +38,7 @@ export default class SingleColorPalette extends Component {
       <ColorBox
         name={color.name}
         color={color[format]}
-        showLink={false}
+        showFullPalette={false}
         key={color.name}
       />
     ));

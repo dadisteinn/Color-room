@@ -29,7 +29,7 @@ export default class Palette extends Component {
         name={color.name}
         color={color[format]}
         moreUrl={`/palette/${id}/${color.id}`}
-        showLink={true}
+        showingFullPalette={true}
         key={color.id}
       />
     ));
@@ -40,7 +40,7 @@ export default class Palette extends Component {
           level={level}
           changeLevel={this.changeLevel}
           handleChange={this.changeFormat}
-          showingAllColors={true}
+          showingFullPalette={true}
         />
         <div className="Palette-colors">{ColorBoxes}</div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
