@@ -29,7 +29,7 @@ class Navbar extends Component {
   render() {
     const { level, changeLevel, showingFullPalette, classes } = this.props;
     const { format } = this.state;
-    console.log("showing all: ", showingFullPalette);
+
     return (
       <header className={classes.Navbar}>
         <div className={classes.logo}>
