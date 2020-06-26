@@ -156,7 +156,7 @@ class NewPaletteForm extends Component {
           <DraggableColorList
             colors={colors}
             removeColor={this.removeColor}
-            acis="xy"
+            axis="xy"
             onSortEnd={this.onSortEnd}
           />
         </main>
