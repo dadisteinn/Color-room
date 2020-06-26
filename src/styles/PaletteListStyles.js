@@ -3,8 +3,8 @@ export default {
     backgroundColor: "blue",
     height: "100vh",
     display: "flex",
-    alignItems: "flex-start",
     justifyContent: "center",
+    alignItems: "flex-start",
   },
   container: {
     width: "50%",
