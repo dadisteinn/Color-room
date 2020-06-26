@@ -78,7 +78,6 @@ class NewPaletteForm extends Component {
       isDuplicateColor = this.state.colors.some(
         (color) => color.name === randColor.name
       );
-      console.log(randColor.name);
     }
     this.setState({ colors: [...this.state.colors, randColor] });
   }

@@ -50,7 +50,11 @@ export default {
       width: "150px",
     },
   },
-
+  level: {
+    [sizes.down("xs")]: {
+      marginLeft: 10,
+    },
+  },
   selectContainer: {
     marginLeft: "auto",
     marginRight: "1rem",
