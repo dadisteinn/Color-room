@@ -1,17 +1,65 @@
 import React, { Component } from "react";
-import "./ColorBox.css";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Link } from "react-router-dom";
+import classNames from "classnames";
+import { withStyles } from "@material-ui/styles";
+import styles from "./styles/ColorBoxStyles";
 
-export default class ColorBox extends Component {
+class ColorBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { copied: false };
+
+    this.changeCopyState = this.changeCopyState.bind(this);
+  }
+
+  changeCopyState() {
+    this.setState({ copied: true }, () => {
+      setTimeout(() => this.setState({ copied: false }), 1500);
+    });
+  }
+
   render() {
+    const { name, color, moreUrl, showingFullPalette, classes } = this.props;
+    const { copied } = this.state;
+
     return (
-      <div
-        className="ColorBox"
-        style={{
-          backgroundColor: this.props.color,
-        }}
-      >
-        <span>{this.props.name}</span>
-      </div>
+      <CopyToClipboard text={color} onCopy={this.changeCopyState}>
+        <div className={classes.ColorBox} style={{ backgroundColor: color }}>
+          <div
+            className={classNames(classes.copyOverlay, {
+              [classes.showOverlay]: copied,
+            })}
+            style={{ backgroundColor: color }}
+          />
+
+          <div
+            className={classNames(classes.copyMsg, {
+              [classes.showMsg]: copied,
+            })}
+          >
+            <h1>Copied!</h1>
+
+            <p className={classes.copyText}>{color}</p>
+          </div>
+
+          <div>
+            <div className={classes.boxContent}>
+              <span className={classes.colorName}>{name}</span>
+            </div>
+
+            <button className={classes.copyBtn}>Copy</button>
+          </div>
+
+          {showingFullPalette && (
+            <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
+              <span className={classes.seeMore}>MORE</span>
+            </Link>
+          )}
+        </div>
+      </CopyToClipboard>
     );
   }
 }
+
+export default withStyles(styles)(ColorBox);
