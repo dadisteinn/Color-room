@@ -7,10 +7,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
-
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-
 import PaletteMetaFrom from "./PaletteMetaForm";
 import styles from "./styles/PaletteFormNavStyles";
 
@@ -43,7 +41,14 @@ class PaletteFormNav extends Component {
   }
 
   render() {
-    const { classes, open, palettes, handleSubmit } = this.props;
+    const {
+      classes,
+      open,
+      palettes,
+      handleSubmit,
+      handleDrawerOpen,
+    } = this.props;
+    const { formShowing } = this.state;
 
     return (
       <div className={classes.root}>
@@ -59,7 +64,7 @@ class PaletteFormNav extends Component {
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              onClick={this.props.handleDrawerOpen}
+              onClick={handleDrawerOpen}
               edge="start"
               className={clsx(classes.menuButton, open && classes.hide)}
             >
@@ -92,7 +97,7 @@ class PaletteFormNav extends Component {
             </Button>
           </div>
         </AppBar>
-        {this.state.formShowing && (
+        {formShowing && (
           <PaletteMetaFrom
             palettes={palettes}
             handleSubmit={handleSubmit}
